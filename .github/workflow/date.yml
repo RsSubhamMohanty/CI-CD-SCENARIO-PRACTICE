@@ -1,0 +1,37 @@
+# Task 4: Add More Steps
+# Update hello.yml to also:
+
+# Print the current date and time
+# Print the name of the branch that triggered the run (hint: GitHub provides this as a variable)
+# List the files in the repo
+# Print the runner's operating system
+# Push again — watch the new run.
+
+
+name: Date and Time Workflow
+
+on:
+  push:
+
+jobs:
+  date-time:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Print Date and Time
+        run: date
+
+      - name: Print Branch Name
+        run: echo "Branch:${{ github.ref_name }}"
+
+      - name: List Files in the Repo
+        run: ls -la
+
+      - name: Print Runner OS
+        run: echo "Runner OS:$RUNNER_OS"
+
+      - name: Print Message
+        run: echo "Hello from GitHub Actions!"
