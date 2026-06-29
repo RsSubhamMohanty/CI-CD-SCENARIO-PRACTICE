@@ -1,0 +1,22 @@
+name: Self Hosted Runner Demo
+
+on:
+  workflow_dispatch:
+
+jobs:
+  self-hosted-job:
+    runs-on: self-hosted
+
+    steps:
+      - name: Print Hostname
+        run: hostname
+
+      - name: Print Working Directory
+        run: pwd
+
+      - name: Create a File
+        run: |
+          echo "This file was created by GitHub Actions on my self-hosted runner." > github-actions-test.txt
+
+      - name: Verify File Exists
+        run: ls -l github-actions-test.txt
